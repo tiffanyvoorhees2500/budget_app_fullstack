@@ -1,0 +1,16 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Environment files
+*.env
+
+# VS Code
+.vscode/
+*.code-workspace
