@@ -1,17 +1,10 @@
-# Tiffany Voorhees Budget (Full Stack)
-Full-stack budget tracker: Node.js backend, Python analysis, React web, React Native mobile
-
 # Overview
-{Important! Do not say in this section that this is college assignment. Talk about what you are trying to accomplish as a software engineer to further your learning.}
-This project is a backend API for a budget management application.  It is build with Node.js, Express, Sequalize, GraphQL, and a cloud-hosted PostreSQL database. This backend handles users, transactions, income and expenses while supporting authentication with a combination of Google OAuth and JWT.
 
-{Provide a description of the software that you wrote and how it integrates with a Cloud Database. Describe how to use your program.}
+This project is a backend API for a budget management application. It is build with Node.js, Express, Sequalize, GraphQL, and a cloud-hosted PostreSQL database. This backend handles users, transactions, income and expenses while supporting authentication with JWT.
+
 The backend integrates directly with a PostgreSQL database using Sequelize ORM. Models are defined in code and synchronized with the database via migrations. As I already have a good grasp on REST endpoints, I chose to use GraphQL for this project. GraphQL allows for flexible queries and mutations for client applications.
 
-{Describe your purpose for writing this software.}
-The purpose for writing this software is to strengthen my backend development skills, learn to integrate GraphQL with relational data, and practice secure authentication patterns.  This project is the foundation for a future full-stack budgeting app.
-
-{Provide a link to your YouTube demonstration. It should be a 4-5 minute demo of the software running, a walkthrough of the code, and a view of the cloud database.}
+The purpose for writing this software is to start to become familiar with AWS starting with Amazon Relational Database. It will also strengthen my backend development skills, learn to integrate GraphQL with relational data, and practice secure authentication patterns. This project is the foundation for a future full-stack budgeting app.
 
 [Software Demo Video](http://youtube.link.goes.here)
 
@@ -22,11 +15,9 @@ I am using AWS RDS (Amazon Relational Database)
 I have the following tables:
 Users - Authentication/Authorization based on this table
 
-Income - Linked to Users
-Bills - Linked to Users
-Transactions - Linked to Users
-
-** Any table linked to Users means that a user will only be able to see the items linked to them (Authorization)
+Income - Linked to Users (using JWT token)
+Bills - Linked to Users (using JWT token)
+Transactions - Linked to Users (using JWT token)
 
 # Development Environment
 
@@ -42,13 +33,15 @@ Code was written in VS Code, with database management handled through Sequelize 
 
 {Make a list of websites that you found helpful in this project}
 
-- [Web Site Name](http://url.link.goes.here)
-- [Web Site Name](http://url.link.goes.here)
+- [AWS Relational Database Service User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Tutorials.html)
+- [AWS Using pgAdmin to connect to RDS for PostgreSQL DB instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ConnectToPostgreSQLInstance.pgAdmin.html)
+- [Microsoft Learn Quickstart for PostgreSQL extension for VS Code](https://learn.microsoft.com/en-us/azure/postgresql/extensions/vs-code-extension/quickstart-connect)
+- [Sequalize](https://sequelize.org/docs/v6/getting-started/)
+- [Apollo GraphQL Tutorials](https://www.apollographql.com/tutorials/lift-off-part3/06-query-building-in-apollo-sandbox)
 
 # Future Work
 
-{Make a list of things that you need to fix, improve, and add in the future.}
+This project will be built upon in future sprints.
 
-- Item 1
-- Item 2
-- Item 3
+- Using AI Analytics to track spending patterns, and project future balances
+- Create React and React Native Frontend for UI

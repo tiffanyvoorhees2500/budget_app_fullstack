@@ -60,10 +60,6 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         defaultValue: DataTypes.NOW,
       },
-      next_due_date: {
-        type: DataTypes.DATE,
-        allowNull: false,
-      },
       end_date: {
         type: DataTypes.DATE,
         allowNull: true,
@@ -82,7 +78,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       frequency_id: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
       },
       plan_frequency_id: {
         type: DataTypes.INTEGER,
@@ -98,6 +94,15 @@ module.exports = (sequelize, DataTypes) => {
       modelName: 'Expense',
       tableName: 'expenses',
       timestamps: false,
+      validate: {
+        eitherAccount() {
+          if (!this.from_account_id && !this.to_account_id) {
+            throw new Error(
+              'Either from_account_id or to_account_id must be provided.'
+            );
+          }
+        },
+      },
     }
   );
   return Expense;

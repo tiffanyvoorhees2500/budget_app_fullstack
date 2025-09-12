@@ -7,6 +7,7 @@ const typeDefs = require('./graphql/typeDefs');
 const resolvers = require('./graphql/resolvers');
 const { verifyToken } = require('./utils/jwt');
 const { sequelize } = require('./models');
+const syncFrequencies = require('./utils/syncFrequencies');
 const { verify } = require('jsonwebtoken');
 
 const app = express();
@@ -45,7 +46,9 @@ const startServer = async () => {
     // DEV ONLY!!!! & only used when changes with model need updating
     // Sync Sequelize models
     await sequelize.sync({ alter: true });
-    console.log('Database synced');
+    // Makes sure frequencies in DB are up-to-date
+    await syncFrequencies();
+    console.log('Database synced and frequencies synchronized successfully.');
 
     // Start Express server
     app.listen(PORT, () => {

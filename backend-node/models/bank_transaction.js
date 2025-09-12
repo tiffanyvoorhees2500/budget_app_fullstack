@@ -61,11 +61,11 @@ module.exports = (sequelize, DataTypes) => {
       },
       from_account_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       to_account_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
     },
     {
@@ -73,6 +73,15 @@ module.exports = (sequelize, DataTypes) => {
       modelName: 'BankTransaction',
       tableName: 'bank_transactions',
       timestamps: false,
+      validate: {
+        eitherAccount() {
+          if (!this.from_account_id && !this.to_account_id) {
+            throw new Error(
+              'Either from_account_id or to_account_id must be provided.'
+            );
+          }
+        },
+      },
     }
   );
   return BankTransaction;

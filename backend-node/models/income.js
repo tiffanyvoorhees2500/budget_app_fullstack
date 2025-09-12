@@ -64,7 +64,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       frequency_id: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
       },
       to_account_id: {
         type: DataTypes.INTEGER,
@@ -76,6 +76,19 @@ module.exports = (sequelize, DataTypes) => {
       modelName: 'Income',
       tableName: 'incomes',
       timestamps: false,
+      validate: {
+        atLeastOneAmount() {
+          if (
+            !this.salary_amount &&
+            !this.set_amount &&
+            !(this.num_hours || this.rate_per_hour)
+          ) {
+            throw new Error(
+              'You must provide at least one amount: salary_amount, set_amount, or both num_hours and rate_per_hour.'
+            );
+          }
+        },
+      },
     }
   );
   return Income;

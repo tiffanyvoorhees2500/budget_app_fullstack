@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       description: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
       },
       interval: {
         type: DataTypes.INTEGER,
@@ -36,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true,
       },
       day_of_week: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.ARRAY(DataTypes.INTEGER),
         allowNull: true,
       },
       special_day: {
