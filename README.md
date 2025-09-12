@@ -6,17 +6,19 @@ The backend integrates directly with a PostgreSQL database using Sequelize ORM. 
 
 The purpose for writing this software is to start to become familiar with AWS starting with Amazon Relational Database. It will also strengthen my backend development skills, learn to integrate GraphQL with relational data, and practice secure authentication patterns. This project is the foundation for a future full-stack budgeting app.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/U-_KZ3PYrJs)
 
 # Cloud Database
 
 I am using AWS RDS (Amazon Relational Database)
 
 I have the following tables:
+
 - Users - Authentication/Authorization based on this table
 - Income - Linked to Users (using JWT token)
-- Bills - Linked to Users (using JWT token)
+- Expenses - Linked to Users (using JWT token)
 - Transactions - Linked to Users (using JWT token)
+- Frequencies - Used within Expenses and Income for analytics to be used in Sprint #2
 
 # Development Environment
 
