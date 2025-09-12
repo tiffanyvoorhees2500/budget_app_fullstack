@@ -13,8 +13,7 @@ The purpose for writing this software is to start to become familiar with AWS st
 I am using AWS RDS (Amazon Relational Database)
 
 I have the following tables:
-Users - Authentication/Authorization based on this table
-
+- Users - Authentication/Authorization based on this table
 - Income - Linked to Users (using JWT token)
 - Bills - Linked to Users (using JWT token)
 - Transactions - Linked to Users (using JWT token)
