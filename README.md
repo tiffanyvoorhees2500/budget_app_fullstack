@@ -15,9 +15,9 @@ I am using AWS RDS (Amazon Relational Database)
 I have the following tables:
 Users - Authentication/Authorization based on this table
 
-Income - Linked to Users (using JWT token)
-Bills - Linked to Users (using JWT token)
-Transactions - Linked to Users (using JWT token)
+- Income - Linked to Users (using JWT token)
+- Bills - Linked to Users (using JWT token)
+- Transactions - Linked to Users (using JWT token)
 
 # Development Environment
 
