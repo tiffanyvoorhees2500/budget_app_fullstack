@@ -58,5 +58,9 @@ module.exports = {
     bankTransactions: async (user) => await user.getBankTransactions(),
     expenses: async (user) => await user.getExpenses(),
     incomes: async (user) => await user.getIncomes(),
+    importFiles: async (user) => await user.getImportFiles(),
+    columnMappings: async (user) => await user.getColumnMappings(),
+    transactionMatches: async (user) => await user.getTransactionMatches(),
+    frequencyDetails: async (user) => await user.getFrequencyDetails(),
   },
 };

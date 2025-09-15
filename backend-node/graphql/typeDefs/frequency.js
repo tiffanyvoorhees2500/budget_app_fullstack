@@ -11,6 +11,11 @@ module.exports = gql`
     day_of_week: String
     special_day: String
     callback_func_name: String!
+
+    incomes: [Income!]!
+    expenses: [Expense!]!
+    plannedExpenses: [Expense!]!
+    frequencyDetails: [FrequencyDetail!]!
   }
 
   extend type Query {

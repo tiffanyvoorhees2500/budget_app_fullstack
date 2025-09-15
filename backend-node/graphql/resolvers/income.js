@@ -25,8 +25,10 @@ module.exports = {
   },
   Income: {
     user: async (income) => await income.getUser(),
-    toAccount: async (income) => await income.getToAccount(),
+    account: async (income) => await income.getAccount(),
     frequency: async (income) => await income.getFrequency(),
     plannedExpenses: async (income) => await income.getPlannedExpenses(),
+    transactionMatches: async (income) => await income.getTransactionMatches(),
+    frequencyDetails: async (income) => await income.getFrequencyDetails(),
   },
 };

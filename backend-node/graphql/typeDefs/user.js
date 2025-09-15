@@ -9,9 +9,13 @@ module.exports = gql`
     google_id: String!
 
     accounts: [Account!]!
-    bankTransactions: [BankTransaction!]!
-    expenses: [Expense!]!
     incomes: [Income!]!
+    expenses: [Expense!]!
+    bankTransactions: [BankTransaction!]!
+    importFiles: [ImportFile!]!
+    columnMappings: [ColumnMapping!]!
+    transactionMatches: [TransactionMatch!]!
+    frequencyDetails: [FrequencyDetail!]!
   }
 
   extend type Query {

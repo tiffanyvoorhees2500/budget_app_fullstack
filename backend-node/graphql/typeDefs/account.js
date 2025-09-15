@@ -4,22 +4,22 @@ module.exports = gql`
   type Account {
     id: ID!
     user_id: ID!
-    account_id: String
+    account_bank_name: String
     nickname: String!
     beg_balance: Float!
     bank_url: String
     target_goal: Float
     goal_date: String
-    track_spending: Boolean
-    is_active: Boolean
+    track_spending: Boolean!
+    is_active: Boolean!
 
     user: User!
+    incomingIncomes: [Income!]!
+    outgoingExpenses: [Expense!]!
+    incomingRefunds: [Expense!]!
+    plannedExpenses: [Expense!]!
     outgoingTransactions: [BankTransaction!]!
     incomingTransactions: [BankTransaction!]!
-    outgoingExpenses: [Expense!]!
-    incomingExpenses: [Expense!]!
-    plannedExpenses: [Expense!]!
-    incomingIncomes: [Income!]!
   }
 
   extend type Query {
@@ -29,24 +29,24 @@ module.exports = gql`
 
   input CreateAccountInput {
     user_id: ID!
-    account_id: String
+    account_bank_name: String
     nickname: String!
     beg_balance: Float!
     bank_url: String
     target_goal: Float
     goal_date: String
-    track_spending: Boolean
+    track_spending: Boolean!
   }
 
   input UpdateAccountInput {
-    account_id: String
+    account_bank_name: String
     nickname: String
     beg_balance: Float
     bank_url: String
     target_goal: Float
     goal_date: String
-    track_spending: Boolean
-    is_active: Boolean
+    track_spending: Boolean!
+    is_active: Boolean!
   }
 
   extend type Mutation {

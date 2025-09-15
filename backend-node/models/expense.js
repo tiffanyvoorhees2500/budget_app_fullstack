@@ -18,13 +18,13 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'to_account_id',
         as: 'toAccount',
       });
-      Expense.belongsTo(models.Account, {
-        foreignKey: 'plan_account_id',
-        as: 'planningAccount',
-      });
       Expense.belongsTo(models.Frequency, {
         foreignKey: 'frequency_id',
         as: 'frequency',
+      });
+      Expense.belongsTo(models.Account, {
+        foreignKey: 'plan_account_id',
+        as: 'planningAccount',
       });
       Expense.belongsTo(models.Frequency, {
         foreignKey: 'plan_frequency_id',
@@ -34,6 +34,9 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'plan_income_id',
         as: 'planningIncome',
       });
+
+      Expense.hasMany(models.TransactionMatch, { foreignKey: 'expense_id' });
+      Expense.hasMany(models.FrequencyDetail, { foreignKey: 'expense_id' });
     }
   }
   Expense.init(

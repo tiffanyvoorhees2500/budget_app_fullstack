@@ -11,13 +11,9 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Account.belongsTo(models.User, { foreignKey: 'user_id' });
 
-      Account.hasMany(models.BankTransaction, {
-        foreignKey: 'from_account_id',
-        as: 'outgoingTransactions',
-      });
-      Account.hasMany(models.BankTransaction, {
+      Account.hasMany(models.Income, {
         foreignKey: 'to_account_id',
-        as: 'incomingTransactions',
+        as: 'incomingIncomes',
       });
       Account.hasMany(models.Expense, {
         foreignKey: 'from_account_id',
@@ -25,15 +21,19 @@ module.exports = (sequelize, DataTypes) => {
       });
       Account.hasMany(models.Expense, {
         foreignKey: 'to_account_id',
-        as: 'incomingExpenses',
+        as: 'incomingRefunds',
       });
       Account.hasMany(models.Expense, {
         foreignKey: 'plan_account_id',
         as: 'plannedExpenses',
       });
-      Account.hasMany(models.Income, {
+      Account.hasMany(models.BankTransaction, {
+        foreignKey: 'from_account_id',
+        as: 'outgoingTransactions',
+      });
+      Account.hasMany(models.BankTransaction, {
         foreignKey: 'to_account_id',
-        as: 'incomingIncomes',
+        as: 'incomingTransactions',
       });
     }
   }
@@ -48,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      account_id: {
+      account_bank_name: {
         type: DataTypes.STRING,
         allowNull: true,
       },
@@ -90,7 +90,7 @@ module.exports = (sequelize, DataTypes) => {
       indexes: [
         {
           unique: true,
-          fields: ['user_id', 'account_id'],
+          fields: ['user_id', 'account_bank_name'],
         },
       ],
     }

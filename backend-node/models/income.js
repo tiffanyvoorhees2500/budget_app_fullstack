@@ -11,15 +11,14 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Income.belongsTo(models.User, { foreignKey: 'user_id' });
       Income.belongsTo(models.Frequency, { foreignKey: 'frequency_id' });
-      Income.belongsTo(models.Account, {
-        foreignKey: 'to_account_id',
-        as: 'toAccount',
-      });
+      Income.belongsTo(models.Account, { foreignKey: 'account_id' });
 
       Income.hasMany(models.Expense, {
         foreignKey: 'plan_income_id',
         as: 'plannedExpenses',
       });
+      Income.hasMany(models.TransactionMatch, { foreignKey: 'income_id' });
+      Income.hasMany(models.FrequencyDetail, { foreignKey: 'income_id' });
     }
   }
   Income.init(
@@ -66,7 +65,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      to_account_id: {
+      account_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },

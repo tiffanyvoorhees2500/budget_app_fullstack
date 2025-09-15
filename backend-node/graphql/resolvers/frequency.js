@@ -1,26 +1,33 @@
 const { Frequency } = require('../../models');
 
 module.exports = {
-    Query: {
-        frequencies: async () => await Frequency.findAll(),
-        frequency: async (_, { id }) => await Frequency.findByPk(id),
+  Query: {
+    frequencies: async () => await Frequency.findAll(),
+    frequency: async (_, { id }) => await Frequency.findByPk(id),
+  },
+  Mutation: {
+    createFrequency: async (_, { input }) => {
+      const frequency = await Frequency.create(input);
+      return frequency;
     },
-    Mutation: {
-        createFrequency: async (_, { input }) => {
-            const frequency = await Frequency.create(input);
-            return frequency;
-        },
-        updateFrequency: async (_, { id, input }) => {
-            const frequency = await Frequency.findByPk(id);
-            if (!frequency) throw new Error('Frequency not found');
-            await frequency.update(input);
-            return frequency;
-        },
-        deleteFrequency: async (_, { id }) => {
-            const frequency = await Frequency.findByPk(id);
-            if (!frequency) throw new Error('Frequency not found');
-            await frequency.destroy();
-            return { success: true, message: 'Frequency deleted' };
-        },
+    updateFrequency: async (_, { id, input }) => {
+      const frequency = await Frequency.findByPk(id);
+      if (!frequency) throw new Error('Frequency not found');
+      await frequency.update(input);
+      return frequency;
     },
+    deleteFrequency: async (_, { id }) => {
+      const frequency = await Frequency.findByPk(id);
+      if (!frequency) throw new Error('Frequency not found');
+      await frequency.destroy();
+      return { success: true, message: 'Frequency deleted' };
+    },
+  },
+  Frequency: {
+    incomes: async (frequency) => await frequency.getIncomes(),
+    expenses: async (frequency) => await frequency.getExpenses(),
+    plannedExpenses: async (frequency) => await frequency.getPlannedExpenses(),
+    frequencyDetails: async (frequency) =>
+      await frequency.getFrequencyDetails(),
+  },
 };

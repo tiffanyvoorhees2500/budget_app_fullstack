@@ -4,6 +4,8 @@ module.exports = gql`
   type BankTransaction {
     id: ID!
     user_id: ID!
+    from_account_id: ID!
+    to_account_id: ID!
     date: String!
     amount: Float!
     default_category: String
@@ -11,12 +13,11 @@ module.exports = gql`
     description2: String
     description3: String
     memo: String
-    from_account_id: ID!
-    to_account_id: ID!
 
     user: User!
     fromAccount: Account!
     toAccount: Account!
+    transactionMatches: [TransactionMatch!]!
   }
 
   extend type Query {
@@ -26,6 +27,8 @@ module.exports = gql`
 
   input CreateBankTransactionInput {
     user_id: ID!
+    from_account_id: ID
+    to_account_id: ID
     date: String!
     amount: Float!
     default_category: String
@@ -33,11 +36,11 @@ module.exports = gql`
     description2: String
     description3: String
     memo: String
-    from_account_id: ID!
-    to_account_id: ID!
   }
 
   input UpdateBankTransactionInput {
+    from_account_id: ID
+    to_account_id: ID
     date: String!
     amount: Float!
     default_category: String
@@ -45,8 +48,6 @@ module.exports = gql`
     description2: String
     description3: String
     memo: String
-    from_account_id: ID!
-    to_account_id: ID!
   }
 
   extend type Mutation {

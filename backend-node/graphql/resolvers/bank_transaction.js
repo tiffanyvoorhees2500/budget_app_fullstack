@@ -28,5 +28,7 @@ module.exports = {
     fromAccount: async (bankTransaction) =>
       await bankTransaction.getFromAccount(),
     toAccount: async (bankTransaction) => await bankTransaction.getToAccount(),
+    transactionMatches: async (bankTransaction) =>
+      await bankTransaction.getTransactionMatches(),
   },
 };

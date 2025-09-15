@@ -45,7 +45,7 @@ module.exports = {
     incomingTransactions: async (account) =>
       await account.getIncomingTransactions(),
     outgoingExpenses: async (account) => await account.getOutgoingExpenses(),
-    incomingExpenses: async (account) => await account.getIncomingExpenses(),
+    incomingRefunds: async (account) => await account.getincomingRefunds(),
     plannedExpenses: async (account) => await account.getPlannedExpenses(),
     incomingIncomes: async (account) => await account.getIncomingIncomes(),
   },

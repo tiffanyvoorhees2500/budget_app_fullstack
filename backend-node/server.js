@@ -1,5 +1,5 @@
 // Load environment variables
-require('dotenv').config();
+require('dotenv-flow').config();
 
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');

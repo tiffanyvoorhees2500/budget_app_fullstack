@@ -18,6 +18,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'to_account_id',
         as: 'toAccount',
       });
+
+      BankTransaction.hasMany(models.TransactionMatch, {
+        foreignKey: 'bank_transaction_id',
+      });
     }
   }
   BankTransaction.init(

@@ -4,6 +4,8 @@ module.exports = gql`
   type Income {
     id: ID!
     user_id: ID!
+    frequency_id: ID!
+    account_id: ID!
     description: String!
     start_date: String!
     end_date: String
@@ -11,13 +13,13 @@ module.exports = gql`
     num_hours: Int
     rate_per_hour: Float
     set_amount: Float
-    frequency_id: ID!
-    to_account_id: ID!
 
-    frequency: Frequency!
-    toAccount: Account!
     user: User!
+    frequency: Frequency!
+    account: Account!
     plannedExpenses: [Expense!]!
+    transactionMatches: [TransactionMatch!]!
+    frequencyDetails: [FrequencyDetail!]!
   }
 
   extend type Query {
@@ -27,6 +29,8 @@ module.exports = gql`
 
   input CreateIncomeInput {
     user_id: ID!
+    frequency_id: ID!
+    account_id: ID!
     description: String!
     start_date: String!
     end_date: String
@@ -34,11 +38,11 @@ module.exports = gql`
     num_hours: Int
     rate_per_hour: Float
     set_amount: Float
-    frequency_id: ID!
-    to_account_id: ID!
   }
 
   input UpdateIncomeInput {
+    frequency_id: ID!
+    account_id: ID!
     description: String!
     start_date: String!
     end_date: String
@@ -46,8 +50,6 @@ module.exports = gql`
     num_hours: Int
     rate_per_hour: Float
     set_amount: Float
-    frequency_id: ID!
-    to_account_id: ID!
   }
 
   extend type Mutation {

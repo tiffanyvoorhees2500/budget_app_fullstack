@@ -9,7 +9,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      // frequency doesn't need to show associated data ever
+      Frequency.hasMany(models.Income, { foreignKey: 'frequency_id' });
+      Frequency.hasMany(models.Expense, { foreignKey: 'frequency_id' });
+      Frequency.hasMany(models.Expense, {
+        foreignKey: 'plan_frequency_id',
+        as: 'plannedExpenses',
+      });
+      Frequency.hasMany(models.FrequencyDetail, { foreignKey: 'frequency_id' });
     }
   }
   Frequency.init(

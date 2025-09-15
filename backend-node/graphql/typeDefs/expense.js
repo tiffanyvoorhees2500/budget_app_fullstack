@@ -4,25 +4,28 @@ module.exports = gql`
   type Expense {
     id: ID!
     user_id: ID!
+    from_account_id: ID!
+    to_account_id: ID!
+    frequency_id: ID!
+    plan_account_id: ID!
+    plan_frequency_id: ID!
+    plan_income_id: ID!
     pay_to: String!
     amount: Float!
     start_date: String!
     next_due_date: String!
     end_date: String!
-    from_account_id: ID!
-    to_account_id: ID!
-    plan_account_id: ID!
-    frequency_id: ID!
-    plan_frequency_id: ID!
-    plan_income_id: ID!
 
     user: User!
     fromAccount: Account!
     toAccount: Account!
-    planningAccount: Account!
     frequency: Frequency!
+    planningAccount: Account!
     planningFrequency: Frequency!
     planningIncome: Income!
+
+    transactionMatches: [TransactionMatch!]!
+    frequencyDetails: [FrequencyDetail!]!
   }
 
   extend type Query {
@@ -32,31 +35,31 @@ module.exports = gql`
 
   input CreateExpenseInput {
     user_id: ID!
+    from_account_id: ID!
+    to_account_id: ID!
+    frequency_id: ID!
+    plan_account_id: ID!
+    plan_frequency_id: ID!
+    plan_income_id: ID!
     pay_to: String!
     amount: Float!
     start_date: String!
     next_due_date: String!
     end_date: String!
-    from_account_id: ID!
-    to_account_id: ID!
-    plan_account_id: ID!
-    frequency_id: ID!
-    plan_frequency_id: ID!
-    plan_income_id: ID!
   }
 
   input UpdateExpenseInput {
+    from_account_id: ID!
+    to_account_id: ID!
+    frequency_id: ID!
+    plan_account_id: ID!
+    plan_frequency_id: ID!
+    plan_income_id: ID!
     pay_to: String!
     amount: Float!
     start_date: String!
     next_due_date: String!
     end_date: String!
-    from_account_id: ID!
-    to_account_id: ID!
-    plan_account_id: ID!
-    frequency_id: ID!
-    plan_frequency_id: ID!
-    plan_income_id: ID!
   }
 
   extend type Mutation {

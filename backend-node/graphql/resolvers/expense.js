@@ -31,5 +31,7 @@ module.exports = {
         frequency: async (expense) => await expense.getFrequency(),
         planningFrequency: async (expense) => await expense.getPlanningFrequency(),
         planningIncome: async (expense) => await expense.getPlanningIncome(),
+        transactionMatches: async (expense) => await expense.getTransactionMatches(),
+        frequencyDetails: async (expense) => await expense.getFrequencyDetails(),
     },
 };

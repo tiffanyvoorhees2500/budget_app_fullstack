@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Income, { foreignKey: 'user_id' });
       User.hasMany(models.Expense, { foreignKey: 'user_id' });
       User.hasMany(models.BankTransaction, { foreignKey: 'user_id' });
+      User.hasMany(models.ImportFile, { foreignKey: 'user_id' });
+      User.hasMany(models.ColumnMapping, { foreignKey: 'user_id' });
+      User.hasMany(models.TransactionMatch, { foreignKey: 'user_id' });
+      User.hasMany(models.FrequencyDetail, { foreignKey: 'user_id' });
     }
 
     async validPassword(password) {
