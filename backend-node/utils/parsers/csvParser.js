@@ -11,7 +11,10 @@ async function parseCSV(fileBuffer) {
   });
 
   // Take first 5 rows for preview
-  const previewRows = records.slice(0, 50);
+  // const previewRows = records.slice(0, 50);
+
+  // Retrieve all rows
+  const previewRows = records;
 
   // Include headers
   const headers = records.length > 0 ? Object.keys(records[0]) : [];
