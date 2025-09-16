@@ -11,7 +11,9 @@ const syncFrequencies = require('./utils/syncFrequencies');
 const { verify } = require('jsonwebtoken');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const fileImportRoutes = require('./routes/fileImportRoutes');
+
+// Middleware to handle JSON requests 
 
 app.use(express.json());
 
@@ -21,6 +23,9 @@ app.get('/', (req, res) => {
     message: 'Welcome to the Budget App API - Backend-Node server is running',
   });
 });
+app.use('/api/files', fileImportRoutes);
+
+const PORT = process.env.PORT || 3000;
 
 // Start Apollo Server + Express
 const startServer = async () => {

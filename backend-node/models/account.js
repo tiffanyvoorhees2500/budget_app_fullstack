@@ -28,12 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         as: 'plannedExpenses',
       });
       Account.hasMany(models.BankTransaction, {
-        foreignKey: 'from_account_id',
-        as: 'outgoingTransactions',
-      });
-      Account.hasMany(models.BankTransaction, {
-        foreignKey: 'to_account_id',
-        as: 'incomingTransactions',
+        foreignKey: 'account_id',
       });
     }
   }

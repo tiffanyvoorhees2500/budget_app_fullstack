@@ -5,7 +5,6 @@ module.exports = gql`
     id: ID!
     user_id: ID!
     import_file_id: ID!
-    account_bank_name: String
     column_name: String!
     mapped_to: String!
 
@@ -21,14 +20,12 @@ module.exports = gql`
   input CreateColumnMappingInput {
     user_id: ID!
     import_file_id: ID!
-    account_bank_name: String
     column_name: String!
     mapped_to: String!
   }
 
   input UpdateColumnMappingInput {
     import_file_id: ID!
-    account_bank_name: String
     column_name: String!
     mapped_to: String!
   }

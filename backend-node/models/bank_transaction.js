@@ -10,14 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       BankTransaction.belongsTo(models.User, { foreignKey: 'user_id' });
-      BankTransaction.belongsTo(models.Account, {
-        foreignKey: 'from_account_id',
-        as: 'fromAccount',
-      });
-      BankTransaction.belongsTo(models.Account, {
-        foreignKey: 'to_account_id',
-        as: 'toAccount',
-      });
+      BankTransaction.belongsTo(models.Account, { foreignKey: 'account_id' });
 
       BankTransaction.hasMany(models.TransactionMatch, {
         foreignKey: 'bank_transaction_id',
@@ -36,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       date: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false,
       },
       amount: {
@@ -63,13 +56,9 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: true,
       },
-      from_account_id: {
+      account_id: {
         type: DataTypes.INTEGER,
-        allowNull: true,
-      },
-      to_account_id: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
       },
     },
     {
@@ -77,15 +66,6 @@ module.exports = (sequelize, DataTypes) => {
       modelName: 'BankTransaction',
       tableName: 'bank_transactions',
       timestamps: false,
-      validate: {
-        eitherAccount() {
-          if (!this.from_account_id && !this.to_account_id) {
-            throw new Error(
-              'Either from_account_id or to_account_id must be provided.'
-            );
-          }
-        },
-      },
     }
   );
   return BankTransaction;

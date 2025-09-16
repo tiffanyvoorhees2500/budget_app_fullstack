@@ -4,8 +4,7 @@ module.exports = gql`
   type BankTransaction {
     id: ID!
     user_id: ID!
-    from_account_id: ID!
-    to_account_id: ID!
+    account_id: ID!
     date: String!
     amount: Float!
     default_category: String
@@ -27,8 +26,7 @@ module.exports = gql`
 
   input CreateBankTransactionInput {
     user_id: ID!
-    from_account_id: ID
-    to_account_id: ID
+    account_id: ID!
     date: String!
     amount: Float!
     default_category: String
@@ -39,8 +37,7 @@ module.exports = gql`
   }
 
   input UpdateBankTransactionInput {
-    from_account_id: ID
-    to_account_id: ID
+    account_id: ID!
     date: String!
     amount: Float!
     default_category: String

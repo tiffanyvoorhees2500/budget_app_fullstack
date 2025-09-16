@@ -6,6 +6,8 @@ module.exports = gql`
     id: ID!
     user_id: ID!
     file_path: String!
+    has_account_column: Boolean!
+    account_nickname: String
 
     user: User!
     columnMappings: [ColumnMapping!]!
@@ -19,10 +21,14 @@ module.exports = gql`
   input CreateImportFileInput {
     user_id: ID!
     file_path: String!
+    has_account_column: Boolean!
+    account_nickname: String
   }
 
   input UpdateImportFileInput {
     file_path: String!
+    has_account_column: Boolean!
+    account_nickname: String
   }
 
   extend type Mutation {
