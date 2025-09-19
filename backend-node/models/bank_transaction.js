@@ -52,7 +52,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: true,
       },
-      memo: {
+      description4: {
         type: DataTypes.STRING,
         allowNull: true,
       },

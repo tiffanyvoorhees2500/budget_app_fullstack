@@ -16,12 +16,13 @@ module.exports = {
     login: async (_, { email, password }) => {
       const user = await User.findOne({ where: { email: email } });
       if (!user) {
-        throw new Error('Invalid email or password');
+        throw new Error('Invalid email');
       }
 
-      const valid = await bcrypt.compare(password, user.password);
+      // const valid = await bcrypt.compare(password, user.password);
+      const valid = password === user.password
       if (!valid) {
-        throw new Error('Invalid email or password');
+        throw new Error('Invalid password');
       }
 
       // issue JWT

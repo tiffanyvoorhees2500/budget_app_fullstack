@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       ColumnMapping.belongsTo(models.ImportFile, { foreignKey: 'import_file_id' });
     }
   }
+
   ColumnMapping.init(
     {
       id: {
@@ -29,7 +30,20 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       mapped_to: {
-        type: DataTypes.STRING,
+        type: DataTypes.ENUM(
+          'id',
+          'amount',
+          'credit',
+          'debit',
+          'transactions_type',
+          'date',
+          'account_nickname',
+          'description1',
+          'description2',
+          'description3',
+          'description4',
+          'default_category'
+        ),
         allowNull: false,
       },
     },

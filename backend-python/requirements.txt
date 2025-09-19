@@ -1,0 +1,13 @@
+# --- Web framework ---
+fastapi[standard]   # FastAPI with uvicorn, python-multipart, jinja2, etc.
+
+# --- Data analysis ---
+pandas              # Data wrangling / cleaning
+numpy               # Needed by pandas, useful for calculations
+
+# --- File formats ---
+ofxparse            # For reading OFX/QFX bank files (optional)
+openpyxl            # If you ever need Excel (xlsx) support
+
+# --- Dev tools ---
+python-dotenv       # For managing environment variables (optional, but nice)

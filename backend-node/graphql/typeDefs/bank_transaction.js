@@ -11,7 +11,7 @@ module.exports = gql`
     description1: String!
     description2: String
     description3: String
-    memo: String
+    description4: String
 
     user: User!
     fromAccount: Account!
@@ -33,7 +33,7 @@ module.exports = gql`
     description1: String!
     description2: String
     description3: String
-    memo: String
+    description4: String
   }
 
   input UpdateBankTransactionInput {
@@ -44,7 +44,7 @@ module.exports = gql`
     description1: String!
     description2: String
     description3: String
-    memo: String
+    description4: String
   }
 
   extend type Mutation {

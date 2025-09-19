@@ -138,7 +138,7 @@ module.exports = {
           user_id: userId,
           import_file_id: importFileId,
           column_name: 'Memo',
-          mapped_to: 'memo',
+          mapped_to: 'description4',
         },
       ],
       { returning: true }
